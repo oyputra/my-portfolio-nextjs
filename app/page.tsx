@@ -1,69 +1,119 @@
 import Image from "next/image";
+import { Box, Code, Flex, Heading, Link, Stack, Text } from "@chakra-ui/react";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
+    <Flex
+      direction="column"
+      flex="1"
+      minH="100vh"
+      align="center"
+      justify="center"
+      bg="gray.50"
+      _dark={{ bg: "black" }}
+    >
+      <Flex
+        as="main"
+        direction="column"
+        flex="1"
+        w="full"
+        maxW="3xl"
+        align={{ base: "center", sm: "flex-start" }}
+        justify="space-between"
+        py="32"
+        px="16"
+        bg="white"
+        _dark={{ bg: "black" }}
+      >
+        <Box _dark={{ filter: "invert(1)" }}>
+          <Image src="/next.svg" alt="Next.js logo" width={100} height={20} priority />
+        </Box>
+
+        <Stack
+          gap="6"
+          align={{ base: "center", sm: "flex-start" }}
+          textAlign={{ base: "center", sm: "left" }}
+        >
+          <Heading
+            as="h1"
+            maxW="xs"
+            fontSize="3xl"
+            fontWeight="semibold"
+            lineHeight="10"
+            letterSpacing="tight"
+            color="black"
+            _dark={{ color: "gray.50" }}
+          >
+            To get started, edit the <Code>page.tsx</Code> file.
+          </Heading>
+          <Text maxW="md" fontSize="lg" lineHeight="8" color="gray.600" _dark={{ color: "gray.400" }}>
             Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+            <Link
+              href="https://vercel.com/templates?framework=next.js"
+              fontWeight="medium"
+              color="gray.950"
+              _dark={{ color: "gray.50" }}
             >
               Templates
-            </a>{" "}
+            </Link>{" "}
             or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+            <Link
+              href="https://nextjs.org/learn"
+              fontWeight="medium"
+              color="gray.950"
+              _dark={{ color: "gray.50" }}
             >
               Learning
-            </a>{" "}
+            </Link>{" "}
             center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          </Text>
+        </Stack>
+
+        <Stack direction={{ base: "column", sm: "row" }} gap="4" fontWeight="medium" w={{ base: "full", sm: "auto" }}>
+          <Link
+            href="https://vercel.com/new"
             target="_blank"
             rel="noopener noreferrer"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            gap="2"
+            h="12"
+            w={{ base: "full", md: "158px" }}
+            px="5"
+            rounded="full"
+            bg="black"
+            color="white"
+            textDecoration="none"
+            _hover={{ bg: "#383838" }}
+            _dark={{ bg: "white", color: "black", _hover: { bg: "#ccc" } }}
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
+            <Box filter="invert(1)" _dark={{ filter: "none" }} display="flex">
+              <Image src="/vercel.svg" alt="Vercel logomark" width={16} height={14} />
+            </Box>
             Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          </Link>
+          <Link
+            href="https://nextjs.org/docs"
             target="_blank"
             rel="noopener noreferrer"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            h="12"
+            w={{ base: "full", md: "158px" }}
+            px="5"
+            rounded="full"
+            borderWidth="1px"
+            borderColor="blackAlpha.200"
+            textDecoration="none"
+            _hover={{ bg: "blackAlpha.50", borderColor: "transparent" }}
+            _dark={{ borderColor: "whiteAlpha.300", _hover: { bg: "#1a1a1a" } }}
           >
             Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+          </Link>
+        </Stack>
+      </Flex>
+    </Flex>
   );
 }
